@@ -7,25 +7,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <title>Matching Days</title>
   </head>
-  <body>
-    <div class="day" id="monday">Monday</div>
-    <div class="day" id="tuesday">Tuesday</div>
-    <div class="day" id="wednesday">Wednesday</div>
-    <div class="day" id="thursday">Thursday</div>
-    <div class="day" id="friday">Friday</div>
-    <div class="day" id="saturday">Saturday</div>
-    <div class="day" id="sunday">Sunday</div>
-    <div class="date1">
-      <label for="date1">First date:</label>
-      <input type="date" id="date1" name="date1" />
-    </div>
-    <div class="date2">
-      <label for="date2">Second date:</label>
-      <input type="date" id="date2" name="date2" />
-    </div>
-  </body>
+  <body id="matching_days"></body>
   <script src="js/matching_days.js" charset="utf-8"></script>
   <script src="js/matching_days_DOM.js" charset="utf-8"></script>
+  <script type="text/x-template" id="matching_days_template">
+    <p class="instructions">Select a date to find out which day of the week it falls on. The day for the first date will be pink and the second will be blue. If the two days fall on the same day of the week then the day will be green.</p>
+
+    {{#each day}}
+    <div class="day" id={{this}}>{{this}}</div>
+    {{/each}}
+
+    {{#each date}}
+
+    <div class={{@key}}>
+      <label for={{@key}}>{{this}}</label>
+      <input type="date" id={{@key}} name={{@key}} />
+    </div>
+    {{/each}}
+  </script>
 </html>
